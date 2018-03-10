@@ -4,7 +4,7 @@
         <attr name="bnbElevation" format="dimension" />
         <attr name="bnbActiveColor" format="color" />
         <attr name="bnbInactiveColor" format="color" />
-        <attr name="bnbBackgroundColor" format="color" />
+        <attr name="bnbBackgroundColor" format="color|reference" />
         <attr name="bnbAnimationDuration" format="integer" />
         <attr name="bnbMode" format="enum">
             <enum name="mode_default" value="0" />

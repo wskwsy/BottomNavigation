@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.IntDef;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -149,7 +150,8 @@ public class BottomNavigationBar extends FrameLayout {
 
             mActiveColor = typedArray.getColor(R.styleable.BottomNavigationBar_bnbActiveColor, Utils.fetchContextColor(context, R.attr.colorAccent));
             mInActiveColor = typedArray.getColor(R.styleable.BottomNavigationBar_bnbInactiveColor, Color.LTGRAY);
-            mBackgroundColor = typedArray.getColor(R.styleable.BottomNavigationBar_bnbBackgroundColor, Color.WHITE);
+            //mBackgroundColor = typedArray.getColor(R.styleable.BottomNavigationBar_bnbBackgroundColor, Color.WHITE);
+            mBackgroundColor = typedArray.getResourceId(R.styleable.BottomNavigationBar_bnbBackgroundColor, 0);
             mAutoHideEnabled = typedArray.getBoolean(R.styleable.BottomNavigationBar_bnbAutoHideEnabled, true);
             mElevation = typedArray.getDimension(R.styleable.BottomNavigationBar_bnbElevation, getResources().getDimension(R.dimen.bottom_navigation_elevation));
 
@@ -197,7 +199,7 @@ public class BottomNavigationBar extends FrameLayout {
         } else {
             mActiveColor = Utils.fetchContextColor(context, R.attr.colorAccent);
             mInActiveColor = Color.LTGRAY;
-            mBackgroundColor = Color.WHITE;
+            mBackgroundColor = 0;
             mElevation = getResources().getDimension(R.dimen.bottom_navigation_elevation);
         }
     }
@@ -323,6 +325,12 @@ public class BottomNavigationBar extends FrameLayout {
         return this;
     }
 
+
+    public BottomNavigationBar setBarBackgroundRes(@DrawableRes int backgroundColor) {
+        this.mBackgroundColor = backgroundColor;
+        return this;
+    }
+
     /**
      * @param backgroundColorCode color code in string format for the default background color
      * @return this, to allow builder pattern
@@ -380,7 +388,8 @@ public class BottomNavigationBar extends FrameLayout {
 
             if (mBackgroundStyle == BACKGROUND_STYLE_STATIC) {
                 mBackgroundOverlay.setVisibility(View.GONE);
-                mContainer.setBackgroundColor(mBackgroundColor);
+                //mContainer.setBackgroundColor(mBackgroundColor);
+                mContainer.setBackgroundResource(mBackgroundColor);
             }
 
             int screenWidth = Utils.getScreenWidth(getContext());

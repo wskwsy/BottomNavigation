@@ -214,7 +214,7 @@ public class HomeActivityJava extends AppCompatActivity implements View.OnClickL
         bottomNavigationBar.setMode(modeSpinner.getSelectedItemPosition());
         bottomNavigationBar.setBackgroundStyle(bgSpinner.getSelectedItemPosition());
 
-
+        bottomNavigationBar.setBarBackgroundRes(R.drawable.ic_location_on_white_24dp);
         if (itemSpinner.getSelectedItemPosition() == 0) {
             bottomNavigationBar
                     .addItem(new BottomNavigationItem(R.drawable.ic_location_on_white_24dp, "Nearby").setActiveColorResource(R.color.orange).setBadgeItem(numberBadgeItem))
